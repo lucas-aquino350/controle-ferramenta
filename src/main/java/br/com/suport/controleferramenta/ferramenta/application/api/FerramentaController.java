@@ -14,9 +14,9 @@ public class FerramentaController implements FerramentaApi {
 
     @Override
     public FerramentaResponse postFerramenta(FerramentaRequest ferramentaRequest) {
-        log.info("[inicia] FerramentaController - portFerramenta");
+        log.info("[inicia] FerramentaController - postFerramenta");
         FerramentaResponse ferramentaCriada = ferramentaSerrvice.criaFerramenta(ferramentaRequest);
-        log.info("[finaliza] FerramentaController - portFerramenta");
+        log.info("[finaliza] FerramentaController - postFerramenta");
         return ferramentaCriada;
     }
 }
