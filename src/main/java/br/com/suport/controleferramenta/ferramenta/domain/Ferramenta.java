@@ -1,5 +1,6 @@
 package br.com.suport.controleferramenta.ferramenta.domain;
 
+import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaRequest;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -35,15 +36,15 @@ public class Ferramenta {
     private LocalDateTime dataHoraCadastro;
     private LocalDateTime dataHoraUltimaAlteracao;
 
-    public Ferramenta(UUID idFerramenta, String nome, String marca, String referencia, String modelo, String acessorios, Integer quantidade, String funcao, LocalDateTime dataHoraCadastro) {
+    public Ferramenta(FerramentaRequest ferramentaRequest) {
         this.idFerramenta = UUID.randomUUID();
-        this.nome = nome;
-        this.marca = marca;
-        this.referencia = referencia;
-        this.modelo = modelo;
-        this.acessorios = acessorios;
-        this.quantidade = quantidade;
-        this.funcao = funcao;
-        this.dataHoraCadastro = dataHoraCadastro;
+        this.nome = ferramentaRequest.getNome();
+        this.marca = ferramentaRequest.getMarca();
+        this.referencia = ferramentaRequest.getReferencia();
+        this.modelo = ferramentaRequest.getModelo();
+        this.acessorios = ferramentaRequest.getAcessorios();
+        this.quantidade = ferramentaRequest.getQuantidade();
+        this.funcao = ferramentaRequest.getFuncao();
+        this.dataHoraCadastro = LocalDateTime.now();
     }
 }

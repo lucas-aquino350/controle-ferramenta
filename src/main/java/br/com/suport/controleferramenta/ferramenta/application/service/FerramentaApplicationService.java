@@ -2,18 +2,25 @@ package br.com.suport.controleferramenta.ferramenta.application.service;
 
 import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaRequest;
 import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaResponse;
-import lombok.extern.log4j.Log4j;
+import br.com.suport.controleferramenta.ferramenta.application.repository.FerramentaRepository;
+import br.com.suport.controleferramenta.ferramenta.domain.Ferramenta;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 @Service
 @Log4j2
+@RequiredArgsConstructor
 public class FerramentaApplicationService implements FerramentaService {
+
+    private final FerramentaRepository ferramentaRepository;
 
     @Override
     public FerramentaResponse criaFerramenta(FerramentaRequest ferramentaRequest) {
         log.info("[inicia] FerramentaApplicationService - criaFerramenta");
+        Ferramenta ferramenta = ferramentaRepository.salva(new Ferramenta(ferramentaRequest));
         log.info("[finaliza] FerramentaApplicationService - criaFerramenta");
-        return null;
+        return FerramentaResponse.builder()
+                .idFerramenta(ferramenta.getIdFerramenta()).build();
     }
 }
