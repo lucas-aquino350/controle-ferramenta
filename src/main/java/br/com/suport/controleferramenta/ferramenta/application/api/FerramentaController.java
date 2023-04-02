@@ -12,12 +12,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FerramentaController implements FerramentaApi {
 
-    private final FerramentaService ferramentaSerrvice;
+    private final FerramentaService ferramentaService;
 
     @Override
     public FerramentaResponse postFerramenta(FerramentaRequest ferramentaRequest) {
         log.info("[inicia] FerramentaController - postFerramenta");
-        FerramentaResponse ferramentaCriada = ferramentaSerrvice.criaFerramenta(ferramentaRequest);
+        FerramentaResponse ferramentaCriada = ferramentaService.criaFerramenta(ferramentaRequest);
         log.info("[finaliza] FerramentaController - postFerramenta");
         return ferramentaCriada;
     }
@@ -25,7 +25,8 @@ public class FerramentaController implements FerramentaApi {
     @Override
     public List<FerramentaListResponse> getTodasFerramentas() {
         log.info("[inicia] FerramentaController - getTodasFerramentas");
+        List<FerramentaListResponse> ferramentas = ferramentaService.buscaTodasFerramentas();
         log.info("[finaliza] FerramentaController - getTodasFerramentas");
-        return null;
+        return ferramentas;
     }
 }

@@ -1,5 +1,6 @@
 package br.com.suport.controleferramenta.ferramenta.application.service;
 
+import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaListResponse;
 import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaRequest;
 import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaResponse;
 import br.com.suport.controleferramenta.ferramenta.application.repository.FerramentaRepository;
@@ -7,6 +8,8 @@ import br.com.suport.controleferramenta.ferramenta.domain.Ferramenta;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Log4j2
@@ -22,5 +25,13 @@ public class FerramentaApplicationService implements FerramentaService {
         log.info("[finaliza] FerramentaApplicationService - criaFerramenta");
         return FerramentaResponse.builder()
                 .idFerramenta(ferramenta.getIdFerramenta()).build();
+    }
+
+    @Override
+    public List<FerramentaListResponse> buscaTodasFerramentas() {
+        log.info("[inicia] FerramentaApplicationService - buscaTodasFerramentas");
+        List<Ferramenta> ferramentas = ferramentaRepository.buscaTodasFerramentas();
+        log.info("[finaliza] FerramentaApplicationService - buscaTodasFerramentas");
+        return null;
     }
 }
