@@ -25,7 +25,8 @@ public class FerramentaInfraRepository implements FerramentaRepository {
     @Override
     public List<Ferramenta> buscaTodasFerramentas() {
         log.info("[inicia] FerramentaInfraRepository - buscaTodasFerramentas");
+        List<Ferramenta> todasFerramentas = ferramentaMongoSpringRepository.findAll();
         log.info("[finaliza] FerramentaInfraRepository - buscaTodasFerramentas");
-        return null;
+        return todasFerramentas;
     }
 }

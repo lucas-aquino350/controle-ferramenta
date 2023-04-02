@@ -32,6 +32,6 @@ public class FerramentaApplicationService implements FerramentaService {
         log.info("[inicia] FerramentaApplicationService - buscaTodasFerramentas");
         List<Ferramenta> ferramentas = ferramentaRepository.buscaTodasFerramentas();
         log.info("[finaliza] FerramentaApplicationService - buscaTodasFerramentas");
-        return null;
+        return FerramentaListResponse.converte(ferramentas);
     }
 }
