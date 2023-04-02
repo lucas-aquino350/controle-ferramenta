@@ -2,11 +2,14 @@ package br.com.suport.controleferramenta.ferramenta.infra;
 
 import br.com.suport.controleferramenta.ferramenta.application.repository.FerramentaRepository;
 import br.com.suport.controleferramenta.ferramenta.domain.Ferramenta;
+import br.com.suport.controleferramenta.ferramenta.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Log4j2
 @Repository
@@ -28,5 +31,14 @@ public class FerramentaInfraRepository implements FerramentaRepository {
         List<Ferramenta> todasFerramentas = ferramentaMongoSpringRepository.findAll();
         log.info("[finaliza] FerramentaInfraRepository - buscaTodasFerramentas");
         return todasFerramentas;
+    }
+
+    @Override
+    public Ferramenta buscaFerramentaPorId(UUID idFerramenta) {
+        log.info("[inicia] FerramentaInfraRepository - buscaFerramentaPorId");
+        Ferramenta ferramenta = ferramentaMongoSpringRepository.findById(idFerramenta)
+                        .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST, "Ferramenta não encontrada!"));
+        log.info("[finaliza] FerramentaInfraRepository - buscaFerramentaPorId");
+        return ferramenta;
     }
 }

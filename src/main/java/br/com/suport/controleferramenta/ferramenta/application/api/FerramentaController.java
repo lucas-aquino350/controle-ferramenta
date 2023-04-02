@@ -35,7 +35,8 @@ public class FerramentaController implements FerramentaApi {
     public FerramentaDetalhadaResponse getFerramentaAtravesId(UUID idFerramenta) {
         log.info("[inicia] FerramentaController - getFerramentaAtravesId");
         log.info("[idFerramenta] {}", idFerramenta);
+        FerramentaDetalhadaResponse ferramentaDetalhada = ferramentaService.buscaFerramentaPorId(idFerramenta);
         log.info("[finaliza] FerramentaController - getFerramentaAtravesId");
-        return null;
+        return ferramentaDetalhada;
     }
 }
