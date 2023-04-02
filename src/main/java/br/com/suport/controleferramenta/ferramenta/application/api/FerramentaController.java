@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @Log4j2
 @RequiredArgsConstructor
@@ -18,5 +20,12 @@ public class FerramentaController implements FerramentaApi {
         FerramentaResponse ferramentaCriada = ferramentaSerrvice.criaFerramenta(ferramentaRequest);
         log.info("[finaliza] FerramentaController - postFerramenta");
         return ferramentaCriada;
+    }
+
+    @Override
+    public List<FerramentaListResponse> getTodasFerramentas() {
+        log.info("[inicia] FerramentaController - getTodasFerramentas");
+        log.info("[finaliza] FerramentaController - getTodasFerramentas");
+        return null;
     }
 }
