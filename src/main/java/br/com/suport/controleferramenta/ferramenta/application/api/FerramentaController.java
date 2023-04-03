@@ -47,4 +47,11 @@ public class FerramentaController implements FerramentaApi {
         ferramentaService.deletaPorId(idFerramenta);
         log.info("[finaliza] FerramentaController - deletaFerramentaAtravesID");
     }
+
+    @Override
+    public void patchAlteraFerramenta(UUID idFerramenta, FerramentaAlteracaoRequest ferramentaAlteracaoRequest) {
+        log.info("[inicia] FerramentaController - patchAlteraFerramenta");
+        log.info("[idFerramenta] {}", idFerramenta);
+        log.info("[finaliza] FerramentaController - patchAlteraFerramenta");
+    }
 }

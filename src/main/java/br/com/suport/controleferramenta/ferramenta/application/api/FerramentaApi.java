@@ -26,4 +26,9 @@ public interface FerramentaApi {
     @DeleteMapping(value = "/{idFerramenta}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaFerramentaAtravesID (@PathVariable UUID idFerramenta);
+
+    @PatchMapping(value = "/{idFerramenta}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void patchAlteraFerramenta (@PathVariable UUID idFerramenta,
+                             @Valid @RequestBody FerramentaAlteracaoRequest ferramentaAlteracaoRequest);
 }
