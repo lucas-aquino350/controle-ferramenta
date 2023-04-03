@@ -22,4 +22,8 @@ public interface FerramentaApi {
     @GetMapping(value = "/{idFerramenta}")
     @ResponseStatus(code = HttpStatus.OK)
     FerramentaDetalhadaResponse getFerramentaAtravesId (@PathVariable UUID idFerramenta);
+
+    @DeleteMapping(value = "/{idFerramenta}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaFerramentaAtravesID (@PathVariable UUID idFerramenta);
 }

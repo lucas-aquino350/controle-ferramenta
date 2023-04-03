@@ -44,4 +44,10 @@ public class FerramentaApplicationService implements FerramentaService {
         log.info("[finaliza] FerramentaApplicationService - buscaFerramentaPorId");
         return new FerramentaDetalhadaResponse(ferramenta);
     }
+
+    @Override
+    public void deletaPorId(UUID idFerramenta) {
+        log.info("[inicia] FerramentaApplicationService - deletaPorId");
+        log.info("[finaliza] FerramentaApplicationService - deletaPorId");
+    }
 }

@@ -12,4 +12,5 @@ public interface FerramentaService {
     FerramentaResponse criaFerramenta(FerramentaRequest ferramentaRequest);
     List<FerramentaListResponse> buscaTodasFerramentas();
     FerramentaDetalhadaResponse buscaFerramentaPorId(UUID idFerramenta);
+    void deletaPorId(UUID idFerramenta);
 }
