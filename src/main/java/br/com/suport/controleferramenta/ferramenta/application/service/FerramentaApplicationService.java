@@ -1,9 +1,6 @@
 package br.com.suport.controleferramenta.ferramenta.application.service;
 
-import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaDetalhadaResponse;
-import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaListResponse;
-import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaRequest;
-import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaResponse;
+import br.com.suport.controleferramenta.ferramenta.application.api.*;
 import br.com.suport.controleferramenta.ferramenta.application.repository.FerramentaRepository;
 import br.com.suport.controleferramenta.ferramenta.domain.Ferramenta;
 import lombok.RequiredArgsConstructor;
@@ -51,5 +48,14 @@ public class FerramentaApplicationService implements FerramentaService {
         Ferramenta ferramenta = ferramentaRepository.buscaFerramentaPorId(idFerramenta);
         ferramentaRepository.deleta(ferramenta);
         log.info("[finaliza] FerramentaApplicationService - deletaPorId");
+    }
+
+    @Override
+    public void patchAlteraFerramenta(UUID idFerramenta, FerramentaAlteracaoRequest ferramentaAlteracaoRequest) {
+        log.info("[inicia] FerramentaApplicationService - patchAlteraFerramenta");
+        Ferramenta ferramenta = ferramentaRepository.buscaFerramentaPorId(idFerramenta);
+        ferramenta.altera(ferramentaAlteracaoRequest);
+        ferramentaRepository.salva(ferramenta);
+        log.info("[finaliza] FerramentaApplicationService - patchAlteraFerramenta");
     }
 }

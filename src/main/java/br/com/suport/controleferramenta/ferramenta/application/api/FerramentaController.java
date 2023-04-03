@@ -52,6 +52,7 @@ public class FerramentaController implements FerramentaApi {
     public void patchAlteraFerramenta(UUID idFerramenta, FerramentaAlteracaoRequest ferramentaAlteracaoRequest) {
         log.info("[inicia] FerramentaController - patchAlteraFerramenta");
         log.info("[idFerramenta] {}", idFerramenta);
+        ferramentaService.patchAlteraFerramenta(idFerramenta, ferramentaAlteracaoRequest);
         log.info("[finaliza] FerramentaController - patchAlteraFerramenta");
     }
 }

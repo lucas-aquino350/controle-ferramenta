@@ -1,5 +1,6 @@
 package br.com.suport.controleferramenta.ferramenta.domain;
 
+import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaAlteracaoRequest;
 import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaRequest;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -46,5 +47,14 @@ public class Ferramenta {
         this.quantidade = ferramentaRequest.getQuantidade();
         this.funcao = ferramentaRequest.getFuncao();
         this.dataHoraCadastro = LocalDateTime.now();
+    }
+
+    public void altera(FerramentaAlteracaoRequest ferramentaAlteracaoRequest) {
+        this.nome = ferramentaAlteracaoRequest.getNome();
+        this.marca = ferramentaAlteracaoRequest.getMarca();
+        this.referencia = ferramentaAlteracaoRequest.getReferencia();
+        this.modelo = ferramentaAlteracaoRequest.getModelo();
+        this.acessorios = ferramentaAlteracaoRequest.getAcessorios();
+        this.funcao = ferramentaAlteracaoRequest.getFuncao();
     }
 }
