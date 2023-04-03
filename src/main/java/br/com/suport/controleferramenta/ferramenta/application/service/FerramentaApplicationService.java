@@ -48,6 +48,8 @@ public class FerramentaApplicationService implements FerramentaService {
     @Override
     public void deletaPorId(UUID idFerramenta) {
         log.info("[inicia] FerramentaApplicationService - deletaPorId");
+        Ferramenta ferramenta = ferramentaRepository.buscaFerramentaPorId(idFerramenta);
+        ferramentaRepository.deleta(ferramenta);
         log.info("[finaliza] FerramentaApplicationService - deletaPorId");
     }
 }

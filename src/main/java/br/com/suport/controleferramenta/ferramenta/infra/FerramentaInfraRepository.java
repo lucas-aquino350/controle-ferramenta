@@ -41,4 +41,11 @@ public class FerramentaInfraRepository implements FerramentaRepository {
         log.info("[finaliza] FerramentaInfraRepository - buscaFerramentaPorId");
         return ferramenta;
     }
+
+    @Override
+    public void deleta(Ferramenta ferramenta) {
+        log.info("[inicia] FerramentaInfraRepository - deleta");
+        ferramentaMongoSpringRepository.delete(ferramenta);
+        log.info("[finaliza] FerramentaInfraRepository - deleta");
+    }
 }
