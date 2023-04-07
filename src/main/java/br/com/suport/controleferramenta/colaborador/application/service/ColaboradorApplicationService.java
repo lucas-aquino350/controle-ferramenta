@@ -20,6 +20,8 @@ public class ColaboradorApplicationService implements ColaboradorService {
         log.info("[inicia] ColaboradorApplicationService -  criaColaborador");
         Colaborador colaborador = colaboradorRepository.salva(new Colaborador(colaboradorRequest));
         log.info("[finaliza] ColaboradorApplicationService -  criaColaborador");
-        return null;
+        return ColaboradorResponse
+                .builder().idColaborador(colaborador.getIdColaborador())
+                .build();
     }
 }
