@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Value
 public class ColaboradorRequest {
-    
+
     @NotBlank
     private String nomeCompleto;
     @CPF

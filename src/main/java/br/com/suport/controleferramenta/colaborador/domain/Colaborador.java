@@ -1,5 +1,6 @@
 package br.com.suport.controleferramenta.colaborador.domain;
 
+import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorRequest;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
@@ -30,12 +31,12 @@ public class Colaborador {
     private LocalDateTime dataHoraCadastro;
     private LocalDateTime dataHoraUltimaAlteracao;
 
-    public Colaborador(UUID idColaborador, String nomeCompleto, String cpf, String cargo, String setor) {
+    public Colaborador(ColaboradorRequest colaboradorRequest) {
         this.idColaborador = UUID.randomUUID();
-        this.nomeCompleto = nomeCompleto;
-        this.cpf = cpf;
-        this.cargo = cargo;
-        this.setor = setor;
+        this.nomeCompleto = colaboradorRequest.getNomeCompleto();
+        this.cpf = colaboradorRequest.getCpf();
+        this.cargo = colaboradorRequest.getCargo();
+        this.setor = colaboradorRequest.getSetor();
         this.dataHoraCadastro = LocalDateTime.now();
     }
 }
