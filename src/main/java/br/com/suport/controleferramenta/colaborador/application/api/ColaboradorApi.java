@@ -12,6 +12,6 @@ public interface ColaboradorApi {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    ColaboradorResponse postColaborador (@Valid @RequestBody ColaboradorRequest clienteRequest);
-ar
+    ColaboradorResponse postColaborador (@Valid @RequestBody ColaboradorRequest colaboradorRequest);
+
 }
