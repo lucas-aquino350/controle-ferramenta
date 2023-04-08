@@ -31,7 +31,8 @@ public class ColaboradorApplicationService implements ColaboradorService {
     @Override
     public List<ColaboradorListResponse> buscaTodosColaboradores() {
         log.info("[inicia] ColaboradorApplicationService -  buscaTodosColaboradores");
+        List<Colaborador> colaboradores = colaboradorRepository.buscaTodosColaboradores();
         log.info("[finaliza] ColaboradorApplicationService -  buscaTodosColaboradores");
-        return null;
+        return ColaboradorListResponse.converte(colaboradores);
     }
 }
