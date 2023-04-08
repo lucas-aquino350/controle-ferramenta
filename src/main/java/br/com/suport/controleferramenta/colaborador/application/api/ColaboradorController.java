@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @Log4j2
 @RequiredArgsConstructor
@@ -18,5 +20,13 @@ public class ColaboradorController implements ColaboradorApi {
         ColaboradorResponse colaboradorCriado = colaboradorService.criaColaborador(colaboradorRequest);
         log.info("[finaliza] ColaboradorController -  postColaborador");
         return colaboradorCriado;
+    }
+
+    @Override
+    public List<ColaboradorListResponse> getTodosColaboradores() {
+        log.info("[inicia] ColaboradorController -  getTodosColaboradores");
+        List<ColaboradorListResponse> colaboradores = colaboradorService.buscaTodosColaboradores();
+        log.info("[finaliza] ColaboradorController -  getTodosColaboradores");
+        return colaboradores;
     }
 }
