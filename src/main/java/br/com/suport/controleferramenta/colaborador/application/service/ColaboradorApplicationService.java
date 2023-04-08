@@ -1,5 +1,6 @@
 package br.com.suport.controleferramenta.colaborador.application.service;
 
+import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorDetalhadoResponse;
 import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorListResponse;
 import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorRequest;
 import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorResponse;
@@ -10,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -34,5 +36,12 @@ public class ColaboradorApplicationService implements ColaboradorService {
         List<Colaborador> colaboradores = colaboradorRepository.buscaTodosColaboradores();
         log.info("[finaliza] ColaboradorApplicationService -  buscaTodosColaboradores");
         return ColaboradorListResponse.converte(colaboradores);
+    }
+
+    @Override
+    public ColaboradorDetalhadoResponse buscaColaboradorPorId(UUID idColaborador) {
+        log.info("[inicia] ColaboradorApplicationService -  buscaColaboradorPorId");
+        log.info("[finaliza] ColaboradorApplicationService -  buscaColaboradorPorId");
+        return null;
     }
 }

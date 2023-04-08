@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("v1/colaborador")
@@ -18,4 +19,8 @@ public interface ColaboradorApi {
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     List<ColaboradorListResponse> getTodosColaboradores();
+
+    @GetMapping(value = "/{idColaborador}")
+    @ResponseStatus(code = HttpStatus.OK)
+    ColaboradorDetalhadoResponse getColaboradorAtravesId (@PathVariable UUID idColaborador);
 }
