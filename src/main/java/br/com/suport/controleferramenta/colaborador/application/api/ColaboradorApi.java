@@ -28,4 +28,9 @@ public interface ColaboradorApi {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaColaboradorAtravesID (@PathVariable UUID idColaborador);
 
+    @PatchMapping(value = "/{idColaborador}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void patchAlteraColaborador (@PathVariable UUID idColaborador,
+                             @Valid @RequestBody ColaboradorAlteracaoRequest colaboradorAlteracaoRequest);
+
 }

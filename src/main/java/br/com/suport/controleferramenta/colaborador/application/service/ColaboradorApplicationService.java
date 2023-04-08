@@ -1,9 +1,6 @@
 package br.com.suport.controleferramenta.colaborador.application.service;
 
-import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorDetalhadoResponse;
-import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorListResponse;
-import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorRequest;
-import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorResponse;
+import br.com.suport.controleferramenta.colaborador.application.api.*;
 import br.com.suport.controleferramenta.colaborador.application.repository.ColaboradorRepository;
 import br.com.suport.controleferramenta.colaborador.domain.Colaborador;
 import lombok.RequiredArgsConstructor;
@@ -52,5 +49,14 @@ public class ColaboradorApplicationService implements ColaboradorService {
         Colaborador colaborador = colaboradorRepository.buscaColaboradorPorId(idColaborador);
         colaboradorRepository.deletaColaborador(colaborador);
         log.info("[finaliza] ColaboradorApplicationService -  deletaColaboradorPorId");
+    }
+
+    @Override
+    public void alteraColaborador(UUID idColaborador, ColaboradorAlteracaoRequest colaboradorAlteracaoRequest) {
+        log.info("[inicia] ColaboradorApplicationService -  alteraColaborador");
+        Colaborador colaborador = colaboradorRepository.buscaColaboradorPorId(idColaborador);
+        colaborador.altera(colaboradorAlteracaoRequest);
+        colaboradorRepository.salva(colaborador);
+        log.info("[finaliza] ColaboradorApplicationService -  alteraColaborador");
     }
 }

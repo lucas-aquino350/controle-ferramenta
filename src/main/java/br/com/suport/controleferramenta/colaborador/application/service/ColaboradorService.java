@@ -1,9 +1,6 @@
 package br.com.suport.controleferramenta.colaborador.application.service;
 
-import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorDetalhadoResponse;
-import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorListResponse;
-import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorRequest;
-import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorResponse;
+import br.com.suport.controleferramenta.colaborador.application.api.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -13,4 +10,5 @@ public interface ColaboradorService {
     List<ColaboradorListResponse> buscaTodosColaboradores();
     ColaboradorDetalhadoResponse buscaColaboradorPorId(UUID idColaborador);
     void deletaColaboradorPorId(UUID idColaborador);
+    void alteraColaborador(UUID idColaborador, ColaboradorAlteracaoRequest colaboradorAlteracaoRequest);
 }

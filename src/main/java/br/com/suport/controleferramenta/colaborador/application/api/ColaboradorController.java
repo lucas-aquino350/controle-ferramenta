@@ -47,4 +47,12 @@ public class ColaboradorController implements ColaboradorApi {
         colaboradorService.deletaColaboradorPorId(idColaborador);
         log.info("[finaliza] ColaboradorController -  deletaColaboradorAtravesID");
     }
+
+    @Override
+    public void patchAlteraColaborador(UUID idColaborador, ColaboradorAlteracaoRequest colaboradorAlteracaoRequest) {
+        log.info("[inicia] ColaboradorController -  patchAlteraColaborador");
+        log.info("[idColaborador] {}", idColaborador);
+        colaboradorService.alteraColaborador(idColaborador, colaboradorAlteracaoRequest);
+        log.info("[finaliza] ColaboradorController -  patchAlteraColaborador");
+    }
 }

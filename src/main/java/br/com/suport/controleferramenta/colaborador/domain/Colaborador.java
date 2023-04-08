@@ -1,5 +1,6 @@
 package br.com.suport.controleferramenta.colaborador.domain;
 
+import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorAlteracaoRequest;
 import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorRequest;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
@@ -38,5 +39,11 @@ public class Colaborador {
         this.cargo = colaboradorRequest.getCargo();
         this.setor = colaboradorRequest.getSetor();
         this.dataHoraCadastro = LocalDateTime.now();
+    }
+
+    public void altera(ColaboradorAlteracaoRequest colaboradorAlteracaoRequest) {
+        this.cargo = colaboradorAlteracaoRequest.getCargo();
+        this.setor = colaboradorAlteracaoRequest.getSetor();
+        this.dataHoraUltimaAlteracao = LocalDateTime.now();
     }
 }
