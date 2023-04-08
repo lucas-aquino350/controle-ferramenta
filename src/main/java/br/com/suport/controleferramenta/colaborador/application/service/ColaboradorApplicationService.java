@@ -41,7 +41,8 @@ public class ColaboradorApplicationService implements ColaboradorService {
     @Override
     public ColaboradorDetalhadoResponse buscaColaboradorPorId(UUID idColaborador) {
         log.info("[inicia] ColaboradorApplicationService -  buscaColaboradorPorId");
+        Colaborador colaborador = colaboradorRepository.buscaColaboradorPorId(idColaborador);
         log.info("[finaliza] ColaboradorApplicationService -  buscaColaboradorPorId");
-        return null;
+        return new ColaboradorDetalhadoResponse(colaborador);
     }
 }
