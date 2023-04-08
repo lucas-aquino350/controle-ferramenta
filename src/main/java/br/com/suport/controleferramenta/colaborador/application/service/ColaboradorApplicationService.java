@@ -45,4 +45,12 @@ public class ColaboradorApplicationService implements ColaboradorService {
         log.info("[finaliza] ColaboradorApplicationService -  buscaColaboradorPorId");
         return new ColaboradorDetalhadoResponse(colaborador);
     }
+
+    @Override
+    public void deletaColaboradorPorId(UUID idColaborador) {
+        log.info("[inicia] ColaboradorApplicationService -  deletaColaboradorPorId");
+        Colaborador colaborador = colaboradorRepository.buscaColaboradorPorId(idColaborador);
+        colaboradorRepository.deletaColaborador(colaborador);
+        log.info("[finaliza] ColaboradorApplicationService -  deletaColaboradorPorId");
+    }
 }

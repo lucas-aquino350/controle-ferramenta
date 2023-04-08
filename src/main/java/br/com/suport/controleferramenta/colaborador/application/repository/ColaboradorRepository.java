@@ -9,4 +9,5 @@ public interface ColaboradorRepository {
     Colaborador salva(Colaborador colaborador);
     List<Colaborador> buscaTodosColaboradores();
     Colaborador buscaColaboradorPorId(UUID idColaborador);
+    void deletaColaborador(Colaborador colaborador);
 }

@@ -39,4 +39,12 @@ public class ColaboradorController implements ColaboradorApi {
         log.info("[finaliza] ColaboradorController -  getColaboradorAtravesId");
         return colaborador;
     }
+
+    @Override
+    public void deletaColaboradorAtravesID(UUID idColaborador) {
+        log.info("[inicia] ColaboradorController -  deletaColaboradorAtravesID");
+        log.info("[idColaborador] {}", idColaborador);
+        colaboradorService.deletaColaboradorPorId(idColaborador);
+        log.info("[finaliza] ColaboradorController -  deletaColaboradorAtravesID");
+    }
 }

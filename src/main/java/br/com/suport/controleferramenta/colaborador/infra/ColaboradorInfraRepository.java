@@ -41,4 +41,11 @@ public class ColaboradorInfraRepository implements ColaboradorRepository {
         log.info("[finaliza] ColaboradorInfraRepository -  buscaColaboradorPorId");
         return colaborador;
     }
+
+    @Override
+    public void deletaColaborador(Colaborador colaborador) {
+        log.info("[inicia] ColaboradorInfraRepository -  deletaColaborador");
+        colaboradorMongoSpringRepository.delete(colaborador);
+        log.info("[finaliza] ColaboradorInfraRepository -  deletaColaborador");
+    }
 }

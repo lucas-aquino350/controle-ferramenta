@@ -12,4 +12,5 @@ public interface ColaboradorService {
     ColaboradorResponse criaColaborador(ColaboradorRequest colaboradorRequest);
     List<ColaboradorListResponse> buscaTodosColaboradores();
     ColaboradorDetalhadoResponse buscaColaboradorPorId(UUID idColaborador);
+    void deletaColaboradorPorId(UUID idColaborador);
 }

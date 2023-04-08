@@ -23,4 +23,9 @@ public interface ColaboradorApi {
     @GetMapping(value = "/{idColaborador}")
     @ResponseStatus(code = HttpStatus.OK)
     ColaboradorDetalhadoResponse getColaboradorAtravesId (@PathVariable UUID idColaborador);
+
+    @DeleteMapping(value = "/{idColaborador}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaColaboradorAtravesID (@PathVariable UUID idColaborador);
+
 }
