@@ -34,7 +34,7 @@ public class Emprestimo {
     private LocalDateTime dataHoraUltimaAlteracao;
 
     public Emprestimo(UUID idEmprestimo, UUID idFerramenta, UUID idColaborador, String motivo, String ordemDeServico, LocalDate dataRetirada) {
-        this.idEmprestimo = idEmprestimo;
+        this.idEmprestimo = UUID.randomUUID();
         this.idFerramenta = idFerramenta;
         this.idColaborador = idColaborador;
         this.motivo = motivo;
