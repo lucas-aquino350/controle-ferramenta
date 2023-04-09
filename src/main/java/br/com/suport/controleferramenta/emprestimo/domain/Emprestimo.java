@@ -1,5 +1,6 @@
 package br.com.suport.controleferramenta.emprestimo.domain;
 
+import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoRequest;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -28,17 +29,16 @@ public class Emprestimo {
     private String ordemDeServico;
     @NotNull
     private LocalDate dataRetirada;
-    @NotNull
     private LocalDate dataDevolucao;
     private LocalDateTime dataHoraCriacao;
     private LocalDateTime dataHoraUltimaAlteracao;
 
-    public Emprestimo(UUID idEmprestimo, UUID idFerramenta, UUID idColaborador, String motivo, String ordemDeServico, LocalDate dataRetirada) {
+    public Emprestimo(EmprestimoRequest emprestimoRequest) {
         this.idEmprestimo = UUID.randomUUID();
-        this.idFerramenta = idFerramenta;
-        this.idColaborador = idColaborador;
-        this.motivo = motivo;
-        this.ordemDeServico = ordemDeServico;
-        this.dataRetirada = dataRetirada;
+        this.idFerramenta = emprestimoRequest.getIdFerramenta();
+        this.idColaborador = emprestimoRequest.getIdColaborador();
+        this.motivo = emprestimoRequest.getMotivo();
+        this.ordemDeServico = emprestimoRequest.getOrdemDeServico();
+        this.dataRetirada = emprestimoRequest.getDataRetirada();
     }
 }
