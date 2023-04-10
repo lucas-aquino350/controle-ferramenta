@@ -20,4 +20,6 @@ public class EmprestimoRequest {
     private String ordemDeServico;
     @NotNull
     private LocalDate dataRetirada;
+
+
 }

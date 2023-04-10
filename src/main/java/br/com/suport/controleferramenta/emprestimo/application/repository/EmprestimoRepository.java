@@ -5,7 +5,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
-public interface EmprestimoRepository {
+import java.util.List;
 
+public interface EmprestimoRepository {
     Emprestimo salva(Emprestimo emprestimo);
+    List<Emprestimo> buscaTodosEmprestimos();
 }

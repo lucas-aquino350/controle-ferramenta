@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @Log4j2
 @RequiredArgsConstructor
@@ -18,5 +20,13 @@ public class EmprestimoController implements EmprestimoApi {
         EmprestimoResponse emprestimoCriado = emprestimoService.criaEmprestimo(emprestimoRequest);
         log.info("[finaliza] EmprestimoController - postCliente");
         return emprestimoCriado;
+    }
+
+    @Override
+    public List<EmprestimoListResponse> getTodosEmprestimos() {
+        log.info("[inicia] EmprestimoController - getTodosEmprestimos");
+        List<EmprestimoListResponse> emprestimos = emprestimoService.buscaTodosEmprestimos();
+        log.info("[finaliza] EmprestimoController - getTodosEmprestimos");
+        return emprestimos;
     }
 }
