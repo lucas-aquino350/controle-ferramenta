@@ -1,6 +1,8 @@
 package br.com.suport.controleferramenta.emprestimo.application.service;
 
 import br.com.suport.controleferramenta.colaborador.application.repository.ColaboradorRepository;
+import br.com.suport.controleferramenta.colaborador.domain.Colaborador;
+import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoDetalhadoResponse;
 import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoListResponse;
 import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoRequest;
 import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoResponse;
@@ -11,6 +13,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,5 +41,14 @@ public class EmprestimoApplicationService implements EmprestimoService {
         return emprestimos
                 .stream().map(e -> new EmprestimoListResponse(e, colaboradorRepository.buscaColaboradorPorId(e.getIdColaborador())))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public EmprestimoDetalhadoResponse buscaEmprestimoPorId(UUID idEmprestimo) {
+        log.info("[inicia] EmprestimoApplicationService - buscaEmprestimoPorId");
+        Emprestimo emprestimo = emprestimoRepository.buscaEmprestimoPorId(idEmprestimo);
+        Colaborador colaborador = colaboradorRepository.buscaColaboradorPorId(emprestimo.getIdColaborador());
+        log.info("[finaliza] EmprestimoApplicationService - buscaEmprestimoPorId");
+        return new EmprestimoDetalhadoResponse(emprestimo, colaborador);
     }
 }

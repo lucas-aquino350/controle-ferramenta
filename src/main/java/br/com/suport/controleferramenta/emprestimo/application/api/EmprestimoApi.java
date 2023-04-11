@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("v1/emprestimo")
@@ -17,4 +18,9 @@ public interface EmprestimoApi {
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     List<EmprestimoListResponse> getTodosEmprestimos();
+
+    @GetMapping("/{idEmprestimo}")
+    @ResponseStatus(code = HttpStatus.OK)
+    EmprestimoDetalhadoResponse getEmprestimoAtravesId (@PathVariable UUID idEmprestimo);
+
 }

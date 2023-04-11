@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @Log4j2
@@ -28,5 +29,13 @@ public class EmprestimoController implements EmprestimoApi {
         List<EmprestimoListResponse> emprestimos = emprestimoService.buscaTodosEmprestimos();
         log.info("[finaliza] EmprestimoController - getTodosEmprestimos");
         return emprestimos;
+    }
+
+    @Override
+    public EmprestimoDetalhadoResponse getEmprestimoAtravesId(UUID idEmprestimo) {
+        log.info("[inicia] EmprestimoController - getEmprestimoAtravesId");
+        EmprestimoDetalhadoResponse emprestimoDetalhado = emprestimoService.buscaEmprestimoPorId(idEmprestimo);
+        log.info("[finaliza] EmprestimoController - getEmprestimoAtravesId");
+        return emprestimoDetalhado;
     }
 }
