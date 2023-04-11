@@ -1,5 +1,6 @@
 package br.com.suport.controleferramenta.emprestimo.application.api;
 
+import br.com.suport.controleferramenta.colaborador.domain.Colaborador;
 import br.com.suport.controleferramenta.emprestimo.domain.Emprestimo;
 import lombok.Value;
 
@@ -20,12 +21,10 @@ public class EmprestimoListResponse {
     private String ordemDeServico;
     private LocalDate dataRetirada;
     private LocalDate dataDevolucao;
+    private String nomeColaborador;
 
-    public static List<EmprestimoListResponse> converte(List<Emprestimo> emprestimos) {
-        return emprestimos.stream().map(EmprestimoListResponse::new).collect(Collectors.toList());
-    }
 
-    public EmprestimoListResponse(Emprestimo emprestimo) {
+    public EmprestimoListResponse(Emprestimo emprestimo, Colaborador colaborador) {
         this.idEmprestimo = emprestimo.getIdEmprestimo();
         this.idFerramenta = emprestimo.getIdFerramenta();
         this.idColaborador = emprestimo.getIdColaborador();
@@ -33,5 +32,6 @@ public class EmprestimoListResponse {
         this.ordemDeServico = emprestimo.getOrdemDeServico();
         this.dataRetirada = emprestimo.getDataRetirada();
         this.dataDevolucao = emprestimo.getDataDevolucao();
+        this.nomeColaborador = colaborador.getNomeCompleto();
     }
 }

@@ -11,12 +11,14 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
 @RequiredArgsConstructor
 public class EmprestimoApplicationService implements EmprestimoService {
     private final EmprestimoRepository emprestimoRepository;
+    private final ColaboradorRepository colaboradorRepository;
 
     @Override
     public EmprestimoResponse criaEmprestimo(EmprestimoRequest emprestimoRequest) {
@@ -33,6 +35,8 @@ public class EmprestimoApplicationService implements EmprestimoService {
         log.info("[inicia] EmprestimoApplicationService - buscaTodosEmprestimos");
         List<Emprestimo> emprestimos = emprestimoRepository.buscaTodosEmprestimos();
         log.info("[finaliza] EmprestimoApplicationService - buscaTodosEmprestimos");
-        return EmprestimoListResponse.converte(emprestimos);
+        return emprestimos
+                .stream().map(e -> new EmprestimoListResponse(e, colaboradorRepository.buscaColaboradorPorId(e.getIdColaborador())))
+                .collect(Collectors.toList());
     }
 }
