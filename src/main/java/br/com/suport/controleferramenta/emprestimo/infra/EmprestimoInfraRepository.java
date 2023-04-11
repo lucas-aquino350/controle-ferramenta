@@ -43,4 +43,11 @@ public class EmprestimoInfraRepository implements EmprestimoRepository {
         log.info("[finaliza] EmprestimoInfraRepository - buscaEmprestimoPorId");
         return emprestimo;
     }
+
+    @Override
+    public void deleta(Emprestimo emprestimo) {
+        log.info("[inicia] EmprestimoInfraRepository - deleta");
+        emprestimoMongoSpringData.delete(emprestimo);
+        log.info("[finaliza] EmprestimoInfraRepository - deleta");
+    }
 }

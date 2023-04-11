@@ -38,4 +38,11 @@ public class EmprestimoController implements EmprestimoApi {
         log.info("[finaliza] EmprestimoController - getEmprestimoAtravesId");
         return emprestimoDetalhado;
     }
+
+    @Override
+    public void deletaEmprestimoAtravesId(UUID idEmprestimo) {
+        log.info("[inicia] EmprestimoController - deletaEmprestimoAtravesId");
+        emprestimoService.deletaEmprestimoPorId(idEmprestimo);
+        log.info("[finaliza] EmprestimoController - deletaEmprestimoAtravesId");
+    }
 }

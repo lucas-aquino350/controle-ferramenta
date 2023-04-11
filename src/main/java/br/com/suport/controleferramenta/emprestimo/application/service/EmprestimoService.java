@@ -12,4 +12,5 @@ public interface EmprestimoService {
     EmprestimoResponse criaEmprestimo(EmprestimoRequest emprestimoRequest);
     List<EmprestimoListResponse> buscaTodosEmprestimos();
     EmprestimoDetalhadoResponse buscaEmprestimoPorId(UUID idEmprestimo);
+    void deletaEmprestimoPorId(UUID idEmprestimo);
 }

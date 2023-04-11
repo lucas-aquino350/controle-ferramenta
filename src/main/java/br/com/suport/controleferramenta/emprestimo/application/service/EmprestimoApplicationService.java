@@ -51,4 +51,12 @@ public class EmprestimoApplicationService implements EmprestimoService {
         log.info("[finaliza] EmprestimoApplicationService - buscaEmprestimoPorId");
         return new EmprestimoDetalhadoResponse(emprestimo, colaborador);
     }
+
+    @Override
+    public void deletaEmprestimoPorId(UUID idEmprestimo) {
+        log.info("[inicia] EmprestimoApplicationService - deletaEmprestimoPorId");
+        Emprestimo emprestimo = emprestimoRepository.buscaEmprestimoPorId(idEmprestimo);
+        emprestimoRepository.deleta(emprestimo);
+        log.info("[finaliza] EmprestimoApplicationService - deletaEmprestimoPorId");
+    }
 }

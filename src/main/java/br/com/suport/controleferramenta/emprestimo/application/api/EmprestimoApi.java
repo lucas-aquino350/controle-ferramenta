@@ -23,4 +23,8 @@ public interface EmprestimoApi {
     @ResponseStatus(code = HttpStatus.OK)
     EmprestimoDetalhadoResponse getEmprestimoAtravesId (@PathVariable UUID idEmprestimo);
 
+    @DeleteMapping("/{idEmprestimo}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaEmprestimoAtravesId(@PathVariable UUID idEmprestimo);
+
 }

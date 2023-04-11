@@ -12,4 +12,5 @@ public interface EmprestimoRepository {
     Emprestimo salva(Emprestimo emprestimo);
     List<Emprestimo> buscaTodosEmprestimos();
     Emprestimo buscaEmprestimoPorId(UUID idEmprestimo);
+    void deleta(Emprestimo emprestimo);
 }
