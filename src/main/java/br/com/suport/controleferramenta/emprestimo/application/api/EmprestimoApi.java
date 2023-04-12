@@ -31,5 +31,4 @@ public interface EmprestimoApi {
     @PatchMapping("/{idEmprestimo}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void patchAlteraEmprestimo(@PathVariable UUID idEmprestimo, @Valid @RequestBody EmprestimoAlteracaoRequest emprestimoAlteracaoRequest);
-
 }

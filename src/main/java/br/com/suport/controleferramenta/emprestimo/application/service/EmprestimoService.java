@@ -7,8 +7,12 @@ import java.util.UUID;
 
 public interface EmprestimoService {
     EmprestimoResponse criaEmprestimo(EmprestimoRequest emprestimoRequest);
+
     List<EmprestimoListResponse> buscaTodosEmprestimos();
+
     EmprestimoDetalhadoResponse buscaEmprestimoPorId(UUID idEmprestimo);
+
     void deletaEmprestimoPorId(UUID idEmprestimo);
+
     void alteraEmprestimo(UUID idEmprestimo, EmprestimoAlteracaoRequest emprestimoAlteracaoRequest);
 }
