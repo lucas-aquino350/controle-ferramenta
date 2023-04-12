@@ -15,7 +15,7 @@ public class FerramentaListResponse {
     private String referencia;
     private String modelo;
     private String acessorios;
-    private Integer quantidade;
+    private Integer quantidadeEstoque;
     private String funcao;
 
     public static List<FerramentaListResponse> converte(List<Ferramenta> ferramentas) {
@@ -29,7 +29,7 @@ public class FerramentaListResponse {
         this.referencia = ferramenta.getReferencia();
         this.modelo = ferramenta.getModelo();
         this.acessorios = ferramenta.getAcessorios();
-        this.quantidade = ferramenta.getQuantidade();
+        this.quantidadeEstoque = ferramenta.getQuantidadeEstoque();
         this.funcao = ferramenta.getFuncao();
     }
 }

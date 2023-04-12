@@ -23,6 +23,8 @@ public class Emprestimo {
     @NotNull
     private UUID idFerramenta;
     @NotNull
+    private Integer quantidadeEmprestada;
+    @NotNull
     private UUID idColaborador;
     @NotBlank
     private String motivo;
@@ -41,6 +43,7 @@ public class Emprestimo {
         this.motivo = emprestimoRequest.getMotivo();
         this.ordemDeServico = emprestimoRequest.getOrdemDeServico();
         this.dataRetirada = emprestimoRequest.getDataRetirada();
+        this.quantidadeEmprestada = emprestimoRequest.getQuantidadeEmprestada();
     }
 
     public void altera(EmprestimoAlteracaoRequest emprestimoAlteracaoRequest) {

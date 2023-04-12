@@ -14,12 +14,13 @@ public class EmprestimoRequest {
     private UUID idFerramenta;
     @NotNull
     private UUID idColaborador;
+    @NotNull
+    private Integer quantidadeEmprestada;
     @NotBlank
     private String motivo;
     @NotBlank
     private String ordemDeServico;
     @NotNull
     private LocalDate dataRetirada;
-
 
 }

@@ -18,7 +18,7 @@ public class FerramentaRequest {
     @NotBlank
     private String acessorios;
     @NotNull
-    private Integer quantidade;
+    private Integer quantidadeEstoque;
     @NotBlank
     private String funcao;
 }

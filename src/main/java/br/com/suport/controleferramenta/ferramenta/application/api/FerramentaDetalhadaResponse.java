@@ -10,7 +10,7 @@ public class FerramentaDetalhadaResponse {
     private String referencia;
     private String modelo;
     private String acessorios;
-    private Integer quantidade;
+    private Integer quantidadeEstoque;
     private String funcao;
 
     public FerramentaDetalhadaResponse(Ferramenta ferramenta) {
@@ -19,7 +19,7 @@ public class FerramentaDetalhadaResponse {
         this.referencia = ferramenta.getReferencia();
         this.modelo = ferramenta.getModelo();
         this.acessorios = ferramenta.getAcessorios();
-        this.quantidade = ferramenta.getQuantidade();
+        this.quantidadeEstoque = ferramenta.getQuantidadeEstoque();
         this.funcao = ferramenta.getFuncao();
     }
 }

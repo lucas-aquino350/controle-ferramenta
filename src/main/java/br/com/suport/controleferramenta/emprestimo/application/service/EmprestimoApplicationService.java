@@ -6,6 +6,7 @@ import br.com.suport.controleferramenta.emprestimo.application.api.*;
 import br.com.suport.controleferramenta.emprestimo.application.repository.EmprestimoRepository;
 import br.com.suport.controleferramenta.emprestimo.domain.Emprestimo;
 import br.com.suport.controleferramenta.ferramenta.application.repository.FerramentaRepository;
+import br.com.suport.controleferramenta.ferramenta.domain.Ferramenta;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,9 @@ public class EmprestimoApplicationService implements EmprestimoService {
     public EmprestimoResponse criaEmprestimo(EmprestimoRequest emprestimoRequest) {
         log.info("[inicia] EmprestimoApplicationService - criaEmprestimo");
         colaboradorRepository.buscaColaboradorPorId(emprestimoRequest.getIdColaborador());
-        ferramentaRepository.buscaFerramentaPorId(emprestimoRequest.getIdFerramenta());
+        Ferramenta ferramenta =  ferramentaRepository.buscaFerramentaPorId(emprestimoRequest.getIdFerramenta());
+        ferramenta.atualizaEstoque(emprestimoRequest.getQuantidadeEmprestada());
+        ferramentaRepository.salva(ferramenta);
         Emprestimo emprestimo = emprestimoRepository.salva(new Emprestimo(emprestimoRequest));
         log.info("[finaliza] EmprestimoApplicationService - criaEmprestimo");
         return EmprestimoResponse

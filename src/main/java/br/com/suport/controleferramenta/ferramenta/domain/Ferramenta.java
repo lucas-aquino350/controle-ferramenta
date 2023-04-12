@@ -2,9 +2,11 @@ package br.com.suport.controleferramenta.ferramenta.domain;
 
 import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaAlteracaoRequest;
 import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaRequest;
+import br.com.suport.controleferramenta.ferramenta.handler.APIException;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.http.HttpStatus;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -30,7 +32,7 @@ public class Ferramenta {
     @NotBlank
     private String acessorios;
     @NotNull
-    private Integer quantidade;
+    private Integer quantidadeEstoque;
     @NotBlank
     private String funcao;
 
@@ -44,7 +46,7 @@ public class Ferramenta {
         this.referencia = ferramentaRequest.getReferencia();
         this.modelo = ferramentaRequest.getModelo();
         this.acessorios = ferramentaRequest.getAcessorios();
-        this.quantidade = ferramentaRequest.getQuantidade();
+        this.quantidadeEstoque = ferramentaRequest.getQuantidadeEstoque();
         this.funcao = ferramentaRequest.getFuncao();
         this.dataHoraCadastro = LocalDateTime.now();
     }
@@ -56,5 +58,13 @@ public class Ferramenta {
         this.modelo = ferramentaAlteracaoRequest.getModelo();
         this.acessorios = ferramentaAlteracaoRequest.getAcessorios();
         this.funcao = ferramentaAlteracaoRequest.getFuncao();
+    }
+
+    public void atualizaEstoque(Integer quantidadeEmprestada) {
+        if(quantidadeEmprestada > quantidadeEstoque ){
+            throw APIException.build(HttpStatus.NOT_FOUND, "Não há ferramentas suficientes em estoque!");
+        } else {
+            quantidadeEstoque -= quantidadeEmprestada;
+        }
     }
 }

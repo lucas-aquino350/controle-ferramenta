@@ -16,6 +16,7 @@ public class EmprestimoListResponse {
 
     private UUID idEmprestimo;
     private UUID idFerramenta;
+    private Integer quantidadeEmprestada;
     private UUID idColaborador;
     private String motivo;
     private String ordemDeServico;
@@ -33,5 +34,6 @@ public class EmprestimoListResponse {
         this.dataRetirada = emprestimo.getDataRetirada();
         this.dataDevolucao = emprestimo.getDataDevolucao();
         this.nomeColaborador = colaborador.getNomeCompleto();
+        this.quantidadeEmprestada = emprestimo.getQuantidadeEmprestada();
     }
 }
