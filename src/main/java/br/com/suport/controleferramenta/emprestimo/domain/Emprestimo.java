@@ -1,5 +1,6 @@
 package br.com.suport.controleferramenta.emprestimo.domain;
 
+import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoAlteracaoRequest;
 import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoRequest;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -40,5 +41,10 @@ public class Emprestimo {
         this.motivo = emprestimoRequest.getMotivo();
         this.ordemDeServico = emprestimoRequest.getOrdemDeServico();
         this.dataRetirada = emprestimoRequest.getDataRetirada();
+    }
+
+    public void altera(EmprestimoAlteracaoRequest emprestimoAlteracaoRequest) {
+        this.motivo = emprestimoAlteracaoRequest.getMotivo();
+        this.ordemDeServico = emprestimoAlteracaoRequest.getOrdemDeServico();
     }
 }

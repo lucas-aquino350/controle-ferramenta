@@ -1,5 +1,6 @@
 package br.com.suport.controleferramenta.emprestimo.application.api;
 
+import br.com.suport.controleferramenta.emprestimo.domain.Emprestimo;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,5 +27,9 @@ public interface EmprestimoApi {
     @DeleteMapping("/{idEmprestimo}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaEmprestimoAtravesId(@PathVariable UUID idEmprestimo);
+
+    @PatchMapping("/{idEmprestimo}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void patchAlteraEmprestimo(@PathVariable UUID idEmprestimo, @Valid @RequestBody EmprestimoAlteracaoRequest emprestimoAlteracaoRequest);
 
 }

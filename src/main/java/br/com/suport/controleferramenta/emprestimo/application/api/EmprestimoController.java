@@ -45,4 +45,11 @@ public class EmprestimoController implements EmprestimoApi {
         emprestimoService.deletaEmprestimoPorId(idEmprestimo);
         log.info("[finaliza] EmprestimoController - deletaEmprestimoAtravesId");
     }
+
+    @Override
+    public void patchAlteraEmprestimo(UUID idEmprestimo, EmprestimoAlteracaoRequest emprestimoAlteracaoRequest) {
+        log.info("[inicia] EmprestimoController - patchAlteraEmprestimo");
+        emprestimoService.alteraEmprestimo(idEmprestimo, emprestimoAlteracaoRequest);
+        log.info("[finaliza] EmprestimoController - patchAlteraEmprestimo");
+    }
 }

@@ -2,10 +2,7 @@ package br.com.suport.controleferramenta.emprestimo.application.service;
 
 import br.com.suport.controleferramenta.colaborador.application.repository.ColaboradorRepository;
 import br.com.suport.controleferramenta.colaborador.domain.Colaborador;
-import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoDetalhadoResponse;
-import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoListResponse;
-import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoRequest;
-import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoResponse;
+import br.com.suport.controleferramenta.emprestimo.application.api.*;
 import br.com.suport.controleferramenta.emprestimo.application.repository.EmprestimoRepository;
 import br.com.suport.controleferramenta.emprestimo.domain.Emprestimo;
 import lombok.RequiredArgsConstructor;
@@ -58,5 +55,14 @@ public class EmprestimoApplicationService implements EmprestimoService {
         Emprestimo emprestimo = emprestimoRepository.buscaEmprestimoPorId(idEmprestimo);
         emprestimoRepository.deleta(emprestimo);
         log.info("[finaliza] EmprestimoApplicationService - deletaEmprestimoPorId");
+    }
+
+    @Override
+    public void alteraEmprestimo(UUID idEmprestimo, EmprestimoAlteracaoRequest emprestimoAlteracaoRequest) {
+        log.info("[inicia] EmprestimoApplicationService - alteraEmprestimo");
+        Emprestimo emprestimo = emprestimoRepository.buscaEmprestimoPorId(idEmprestimo);
+        emprestimo.altera(emprestimoAlteracaoRequest);
+        emprestimoRepository.salva(emprestimo);
+        log.info("[finaliza] EmprestimoApplicationService - alteraEmprestimo");
     }
 }
