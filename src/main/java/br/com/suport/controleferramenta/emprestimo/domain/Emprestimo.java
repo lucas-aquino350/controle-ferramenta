@@ -32,6 +32,7 @@ public class Emprestimo {
     private String ordemDeServico;
     @NotNull
     private LocalDate dataRetirada;
+    private StatusEmprestimo statusEmprestimo;
     private LocalDate dataDevolucao;
     private LocalDateTime dataHoraCriacao;
     private LocalDateTime dataHoraUltimaAlteracao;
@@ -44,6 +45,7 @@ public class Emprestimo {
         this.ordemDeServico = emprestimoRequest.getOrdemDeServico();
         this.dataRetirada = emprestimoRequest.getDataRetirada();
         this.quantidadeEmprestada = emprestimoRequest.getQuantidadeEmprestada();
+        this.statusEmprestimo = StatusEmprestimo.ATIVO;
     }
 
     public void altera(EmprestimoAlteracaoRequest emprestimoAlteracaoRequest) {

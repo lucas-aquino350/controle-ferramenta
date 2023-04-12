@@ -2,6 +2,7 @@ package br.com.suport.controleferramenta.emprestimo.application.api;
 
 import br.com.suport.controleferramenta.colaborador.domain.Colaborador;
 import br.com.suport.controleferramenta.emprestimo.domain.Emprestimo;
+import br.com.suport.controleferramenta.emprestimo.domain.StatusEmprestimo;
 import lombok.Value;
 
 import java.time.LocalDate;
@@ -19,6 +20,7 @@ public class EmprestimoDetalhadoResponse {
     private LocalDate dataRetirada;
     private LocalDate dataDevolucao;
     private String nomeColaborador;
+    private StatusEmprestimo statusEmprestimo;
 
     public EmprestimoDetalhadoResponse(Emprestimo emprestimo, Colaborador colaborador) {
         this.idEmprestimo = emprestimo.getIdEmprestimo();
@@ -30,5 +32,6 @@ public class EmprestimoDetalhadoResponse {
         this.dataDevolucao = emprestimo.getDataDevolucao();
         this.nomeColaborador = colaborador.getNomeCompleto();
         this.quantidadeEmprestada = emprestimo.getQuantidadeEmprestada();
+        this.statusEmprestimo = emprestimo.getStatusEmprestimo();
     }
 }
