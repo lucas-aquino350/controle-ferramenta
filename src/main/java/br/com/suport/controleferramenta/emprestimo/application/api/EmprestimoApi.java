@@ -24,6 +24,10 @@ public interface EmprestimoApi {
     @ResponseStatus(code = HttpStatus.OK)
     List<EmprestimoListResponse> buscaEmprestimoPorFerramenta ( @PathVariable UUID idFerramenta);
 
+    @GetMapping("/listaPorColaborador/{idColaborador}")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<EmprestimoListResponse> buscaEmprestimoPorColaborador ( @PathVariable UUID idColaborador);
+
     @GetMapping("/{idEmprestimo}")
     @ResponseStatus(code = HttpStatus.OK)
     EmprestimoDetalhadoResponse getEmprestimoAtravesId (@PathVariable UUID idEmprestimo);

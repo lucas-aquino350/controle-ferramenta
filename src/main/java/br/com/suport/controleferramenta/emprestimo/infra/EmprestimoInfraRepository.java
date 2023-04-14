@@ -58,4 +58,12 @@ public class EmprestimoInfraRepository implements EmprestimoRepository {
         log.info("[finaliza] EmprestimoInfraRepository - buscaEmprestimoPorFerramenta");
         return listaDeEmprestimos;
     }
+
+    @Override
+    public List<Emprestimo> buscaEmprestimoPorColaborador(UUID idColaborador) {
+        log.info("[inicia] EmprestimoInfraRepository - buscaEmprestimoPorColaborador");
+        List<Emprestimo> listaDeEmprestimos = emprestimoMongoSpringData.findAllByIdColaborador(idColaborador);
+        log.info("[inicia] EmprestimoInfraRepository - buscaEmprestimoPorColaborador");
+        return listaDeEmprestimos;
+    }
 }

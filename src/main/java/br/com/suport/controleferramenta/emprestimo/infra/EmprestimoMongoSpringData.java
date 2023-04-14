@@ -8,4 +8,5 @@ import java.util.UUID;
 
 public interface EmprestimoMongoSpringData extends MongoRepository<Emprestimo, UUID> {
     List<Emprestimo> findAllByIdFerramenta(UUID idFerramenta);
+    List<Emprestimo> findAllByIdColaborador(UUID idColaborador);
 }

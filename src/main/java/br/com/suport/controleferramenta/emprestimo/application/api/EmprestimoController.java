@@ -40,6 +40,14 @@ public class EmprestimoController implements EmprestimoApi {
     }
 
     @Override
+    public List<EmprestimoListResponse> buscaEmprestimoPorColaborador(UUID idColaborador) {
+        log.info("[inicia] EmprestimoController - buscaEmprestimoPorColaborador");
+        List<EmprestimoListResponse> emprestimos = emprestimoService.buscaEmprestimoPorColaborador(idColaborador);
+        log.info("[finaliza] EmprestimoController - buscaEmprestimoPorColaborador");
+        return emprestimos;
+    }
+
+    @Override
     public EmprestimoDetalhadoResponse getEmprestimoAtravesId(UUID idEmprestimo) {
         log.info("[inicia] EmprestimoController - getEmprestimoAtravesId");
         EmprestimoDetalhadoResponse emprestimoDetalhado = emprestimoService.buscaEmprestimoPorId(idEmprestimo);

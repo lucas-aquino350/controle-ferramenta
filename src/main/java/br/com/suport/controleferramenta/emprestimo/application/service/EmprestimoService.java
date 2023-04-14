@@ -13,4 +13,5 @@ public interface EmprestimoService {
     void alteraEmprestimo(UUID idEmprestimo, EmprestimoAlteracaoRequest emprestimoAlteracaoRequest);
     void devolveEmprestimo(UUID idEmprestimo, EmprestimoDevolucaoRequest emprestimoAlteracaoRequest);
     List<EmprestimoListResponse> buscaEmprestimoPorFerramenta(UUID idFerramenta);
+    List<EmprestimoListResponse> buscaEmprestimoPorColaborador(UUID idColaborador);
 }

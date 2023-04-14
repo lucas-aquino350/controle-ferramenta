@@ -100,4 +100,15 @@ public class EmprestimoApplicationService implements EmprestimoService {
                 .stream().map(e -> new EmprestimoListResponse(e, colaboradorRepository.buscaColaboradorPorId(e.getIdColaborador())))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<EmprestimoListResponse> buscaEmprestimoPorColaborador(UUID idColaborador) {
+        log.info("[inicia] EmprestimoApplicationService - buscaEmprestimoPorColaborador");
+        colaboradorRepository.buscaColaboradorPorId(idColaborador);
+        List<Emprestimo> emprestimos = emprestimoRepository.buscaEmprestimoPorColaborador(idColaborador);
+        log.info("[finaliza] EmprestimoApplicationService - buscaEmprestimoPorColaborador");
+        return emprestimos
+                .stream().map(e -> new EmprestimoListResponse(e, colaboradorRepository.buscaColaboradorPorId(e.getIdColaborador())))
+                .collect(Collectors.toList());
+    }
 }
