@@ -7,8 +7,10 @@ import br.com.suport.controleferramenta.emprestimo.application.repository.Empres
 import br.com.suport.controleferramenta.emprestimo.domain.Emprestimo;
 import br.com.suport.controleferramenta.ferramenta.application.repository.FerramentaRepository;
 import br.com.suport.controleferramenta.ferramenta.domain.Ferramenta;
+import br.com.suport.controleferramenta.ferramenta.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -71,5 +73,20 @@ public class EmprestimoApplicationService implements EmprestimoService {
         emprestimo.altera(emprestimoAlteracaoRequest);
         emprestimoRepository.salva(emprestimo);
         log.info("[finaliza] EmprestimoApplicationService - alteraEmprestimo");
+    }
+
+    @Override
+    public void devolveEmprestimo(UUID idEmprestimo, EmprestimoDevolucaoRequest emprestimoAlteracaoRequest) {
+        log.info("[inicia] EmprestimoApplicationService - devolveEmprestimo");
+        Emprestimo emprestimo = emprestimoRepository.buscaEmprestimoPorId(idEmprestimo);
+        if(emprestimo.getDataDevolucao() != null){
+            throw APIException.build(HttpStatus.BAD_REQUEST, "O Emprestimo já foi devolvido!");
+        }
+        Ferramenta ferramenta = ferramentaRepository.buscaFerramentaPorId(emprestimo.getIdFerramenta());
+        ferramenta.devolveAoEstoque(emprestimo.getQuantidadeEmprestada());
+        emprestimo.registraDevolucao(emprestimoAlteracaoRequest);
+        ferramentaRepository.salva(ferramenta);
+        emprestimoRepository.salva(emprestimo);
+        log.info("[finaliza] EmprestimoApplicationService - devolveEmprestimo");
     }
 }

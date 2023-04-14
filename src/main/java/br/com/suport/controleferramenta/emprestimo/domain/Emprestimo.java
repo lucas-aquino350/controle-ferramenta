@@ -1,6 +1,7 @@
 package br.com.suport.controleferramenta.emprestimo.domain;
 
 import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoAlteracaoRequest;
+import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoDevolucaoRequest;
 import br.com.suport.controleferramenta.emprestimo.application.api.EmprestimoRequest;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -34,6 +35,7 @@ public class Emprestimo {
     private LocalDate dataRetirada;
     private StatusEmprestimo statusEmprestimo;
     private LocalDate dataDevolucao;
+    private String observacaoDevolucao;
     private LocalDateTime dataHoraCriacao;
     private LocalDateTime dataHoraUltimaAlteracao;
 
@@ -51,5 +53,11 @@ public class Emprestimo {
     public void altera(EmprestimoAlteracaoRequest emprestimoAlteracaoRequest) {
         this.motivo = emprestimoAlteracaoRequest.getMotivo();
         this.ordemDeServico = emprestimoAlteracaoRequest.getOrdemDeServico();
+    }
+
+    public void registraDevolucao(EmprestimoDevolucaoRequest emprestimoDevolucaoRequest) {
+        this.dataDevolucao = emprestimoDevolucaoRequest.getDataDevolucao();
+        this.observacaoDevolucao = emprestimoDevolucaoRequest.getObservacaoDevolucao();
+        this.statusEmprestimo = StatusEmprestimo.INATIVO;
     }
 }

@@ -67,4 +67,8 @@ public class Ferramenta {
             quantidadeEstoque -= quantidadeEmprestada;
         }
     }
+
+    public void devolveAoEstoque(Integer quantidadeEmprestada) {
+        quantidadeEstoque += quantidadeEmprestada;
+    }
 }
