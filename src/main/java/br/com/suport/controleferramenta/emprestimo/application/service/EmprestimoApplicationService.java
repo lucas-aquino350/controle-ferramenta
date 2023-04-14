@@ -89,4 +89,11 @@ public class EmprestimoApplicationService implements EmprestimoService {
         emprestimoRepository.salva(emprestimo);
         log.info("[finaliza] EmprestimoApplicationService - devolveEmprestimo");
     }
+
+    @Override
+    public List<EmprestimoListResponse> buscaEmprestimoPorFerramenta(UUID idFerramenta) {
+        log.info("[inicia] EmprestimoApplicationService - buscaEmprestimoPorFerramenta");
+        log.info("[finaliza] EmprestimoApplicationService - buscaEmprestimoPorFerramenta");
+        return null;
+    }
 }
