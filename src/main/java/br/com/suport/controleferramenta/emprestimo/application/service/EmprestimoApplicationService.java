@@ -93,7 +93,11 @@ public class EmprestimoApplicationService implements EmprestimoService {
     @Override
     public List<EmprestimoListResponse> buscaEmprestimoPorFerramenta(UUID idFerramenta) {
         log.info("[inicia] EmprestimoApplicationService - buscaEmprestimoPorFerramenta");
+        ferramentaRepository.buscaFerramentaPorId(idFerramenta);
+        List<Emprestimo> emprestimos = emprestimoRepository.buscaEmprestimoPorFerramenta(idFerramenta);
         log.info("[finaliza] EmprestimoApplicationService - buscaEmprestimoPorFerramenta");
-        return null;
+        return emprestimos
+                .stream().map(e -> new EmprestimoListResponse(e, colaboradorRepository.buscaColaboradorPorId(e.getIdColaborador())))
+                .collect(Collectors.toList());
     }
 }

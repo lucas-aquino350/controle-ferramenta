@@ -13,4 +13,5 @@ public interface EmprestimoRepository {
     List<Emprestimo> buscaTodosEmprestimos();
     Emprestimo buscaEmprestimoPorId(UUID idEmprestimo);
     void deleta(Emprestimo emprestimo);
+    List<Emprestimo> buscaEmprestimoPorFerramenta(UUID idFerramenta);
 }
