@@ -30,5 +30,4 @@ public interface ColaboradorApi {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void patchAlteraColaborador (@PathVariable UUID idColaborador,
                              @Valid @RequestBody ColaboradorAlteracaoRequest colaboradorAlteracaoRequest);
-
 }

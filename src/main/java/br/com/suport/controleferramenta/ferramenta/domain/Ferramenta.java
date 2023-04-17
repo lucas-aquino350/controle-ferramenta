@@ -2,9 +2,10 @@ package br.com.suport.controleferramenta.ferramenta.domain;
 
 import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaAlteracaoRequest;
 import br.com.suport.controleferramenta.ferramenta.application.api.FerramentaRequest;
-import br.com.suport.controleferramenta.ferramenta.handler.APIException;
+import br.com.suport.controleferramenta.handler.APIException;
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.http.HttpStatus;
 
@@ -26,6 +27,7 @@ public class Ferramenta {
     private String nome;
     private String marca;
     @NotBlank
+    @Indexed(unique = true)
     private String referencia;
     @NotBlank
     private String modelo;
@@ -49,6 +51,7 @@ public class Ferramenta {
         this.quantidadeEstoque = ferramentaRequest.getQuantidadeEstoque();
         this.funcao = ferramentaRequest.getFuncao();
         this.dataHoraCadastro = LocalDateTime.now();
+        this.dataHoraUltimaAlteracao = LocalDateTime.now();
     }
 
     public void altera(FerramentaAlteracaoRequest ferramentaAlteracaoRequest) {

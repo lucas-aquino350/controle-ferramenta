@@ -10,28 +10,27 @@ import java.util.UUID;
 
 @Value
 public class EmprestimoDetalhadoResponse {
-
-    private UUID idEmprestimo;
     private UUID idFerramenta;
-    private Integer quantidadeEmprestada;
     private UUID idColaborador;
+    private String nomeColaborador;
     private String motivo;
+    private Integer quantidadeEmprestada;
     private String ordemDeServico;
     private LocalDate dataRetirada;
-    private LocalDate dataDevolucao;
-    private String nomeColaborador;
     private StatusEmprestimo statusEmprestimo;
+    private LocalDate dataDevolucao;
+    private String observacaoDevolucao;
 
     public EmprestimoDetalhadoResponse(Emprestimo emprestimo, Colaborador colaborador) {
-        this.idEmprestimo = emprestimo.getIdEmprestimo();
         this.idFerramenta = emprestimo.getIdFerramenta();
         this.idColaborador = emprestimo.getIdColaborador();
+        this.nomeColaborador = colaborador.getNomeCompleto();
+        this.quantidadeEmprestada = emprestimo.getQuantidadeEmprestada();
         this.motivo = emprestimo.getMotivo();
         this.ordemDeServico = emprestimo.getOrdemDeServico();
         this.dataRetirada = emprestimo.getDataRetirada();
-        this.dataDevolucao = emprestimo.getDataDevolucao();
-        this.nomeColaborador = colaborador.getNomeCompleto();
-        this.quantidadeEmprestada = emprestimo.getQuantidadeEmprestada();
         this.statusEmprestimo = emprestimo.getStatusEmprestimo();
+        this.dataDevolucao = emprestimo.getDataDevolucao();
+        this.observacaoDevolucao = emprestimo.getObservacaoDevolucao();
     }
 }

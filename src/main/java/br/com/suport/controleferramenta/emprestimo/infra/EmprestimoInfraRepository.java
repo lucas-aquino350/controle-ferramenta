@@ -2,7 +2,7 @@ package br.com.suport.controleferramenta.emprestimo.infra;
 
 import br.com.suport.controleferramenta.emprestimo.application.repository.EmprestimoRepository;
 import br.com.suport.controleferramenta.emprestimo.domain.Emprestimo;
-import br.com.suport.controleferramenta.ferramenta.handler.APIException;
+import br.com.suport.controleferramenta.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;

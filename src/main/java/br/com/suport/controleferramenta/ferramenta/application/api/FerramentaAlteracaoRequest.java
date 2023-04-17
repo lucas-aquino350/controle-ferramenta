@@ -4,7 +4,6 @@ import lombok.Value;
 
 @Value
 public class FerramentaAlteracaoRequest {
-
     private String nome;
     private String marca;
     private String referencia;

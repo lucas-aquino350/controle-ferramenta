@@ -7,12 +7,11 @@ import br.com.suport.controleferramenta.emprestimo.application.repository.Empres
 import br.com.suport.controleferramenta.emprestimo.domain.Emprestimo;
 import br.com.suport.controleferramenta.ferramenta.application.repository.FerramentaRepository;
 import br.com.suport.controleferramenta.ferramenta.domain.Ferramenta;
-import br.com.suport.controleferramenta.ferramenta.handler.APIException;
+import br.com.suport.controleferramenta.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -44,9 +43,7 @@ public class EmprestimoApplicationService implements EmprestimoService {
         log.info("[inicia] EmprestimoApplicationService - buscaTodosEmprestimos");
         List<Emprestimo> emprestimos = emprestimoRepository.buscaTodosEmprestimos();
         log.info("[finaliza] EmprestimoApplicationService - buscaTodosEmprestimos");
-        return emprestimos
-                .stream().map(e -> new EmprestimoListResponse(e, colaboradorRepository.buscaColaboradorPorId(e.getIdColaborador())))
-                .collect(Collectors.toList());
+        return converteList(emprestimos);
     }
 
     @Override
@@ -90,15 +87,20 @@ public class EmprestimoApplicationService implements EmprestimoService {
         log.info("[finaliza] EmprestimoApplicationService - devolveEmprestimo");
     }
 
+    private List<EmprestimoListResponse> converteList(List<Emprestimo> emprestimos) {
+        return emprestimos
+                .stream()
+                .map(e -> new EmprestimoListResponse(e, colaboradorRepository.buscaColaboradorPorId(e.getIdColaborador())))
+                .collect(Collectors.toList());
+    }
+
     @Override
     public List<EmprestimoListResponse> buscaEmprestimoPorFerramenta(UUID idFerramenta) {
         log.info("[inicia] EmprestimoApplicationService - buscaEmprestimoPorFerramenta");
         ferramentaRepository.buscaFerramentaPorId(idFerramenta);
         List<Emprestimo> emprestimos = emprestimoRepository.buscaEmprestimoPorFerramenta(idFerramenta);
         log.info("[finaliza] EmprestimoApplicationService - buscaEmprestimoPorFerramenta");
-        return emprestimos
-                .stream().map(e -> new EmprestimoListResponse(e, colaboradorRepository.buscaColaboradorPorId(e.getIdColaborador())))
-                .collect(Collectors.toList());
+        return converteList(emprestimos);
     }
 
     @Override
@@ -107,8 +109,6 @@ public class EmprestimoApplicationService implements EmprestimoService {
         colaboradorRepository.buscaColaboradorPorId(idColaborador);
         List<Emprestimo> emprestimos = emprestimoRepository.buscaEmprestimoPorColaborador(idColaborador);
         log.info("[finaliza] EmprestimoApplicationService - buscaEmprestimoPorColaborador");
-        return emprestimos
-                .stream().map(e -> new EmprestimoListResponse(e, colaboradorRepository.buscaColaboradorPorId(e.getIdColaborador())))
-                .collect(Collectors.toList());
+        return converteList(emprestimos);
     }
 }

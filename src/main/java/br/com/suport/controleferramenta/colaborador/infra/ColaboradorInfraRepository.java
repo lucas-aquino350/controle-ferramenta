@@ -2,12 +2,12 @@ package br.com.suport.controleferramenta.colaborador.infra;
 
 import br.com.suport.controleferramenta.colaborador.application.repository.ColaboradorRepository;
 import br.com.suport.controleferramenta.colaborador.domain.Colaborador;
-import br.com.suport.controleferramenta.ferramenta.handler.APIException;
+import br.com.suport.controleferramenta.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
-
+import org.springframework.dao.DataIntegrityViolationException;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,7 +20,11 @@ public class ColaboradorInfraRepository implements ColaboradorRepository {
     @Override
     public Colaborador salva(Colaborador colaborador) {
         log.info("[inicia] ColaboradorInfraRepository -  salva");
-        colaboradorMongoSpringRepository.save(colaborador);
+        try {
+            colaboradorMongoSpringRepository.save(colaborador);
+        } catch(DataIntegrityViolationException e){
+            throw APIException.build(HttpStatus.BAD_REQUEST, "Existem dados duplicados",e);
+        }
         log.info("[finaliza] ColaboradorInfraRepository -  salva");
         return colaborador;
     }

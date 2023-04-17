@@ -5,6 +5,7 @@ import br.com.suport.controleferramenta.colaborador.application.api.ColaboradorR
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -22,6 +23,7 @@ public class Colaborador {
     @NotBlank
     private String nomeCompleto;
     @CPF
+    @Indexed(unique = true)
     @NotBlank
     private String cpf;
     @NotBlank

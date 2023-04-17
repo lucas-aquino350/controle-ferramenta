@@ -8,7 +8,6 @@ import java.time.LocalDate;
 
 @Value
 public class EmprestimoDevolucaoRequest {
-
     @NotBlank
     private String observacaoDevolucao;
     @NotNull

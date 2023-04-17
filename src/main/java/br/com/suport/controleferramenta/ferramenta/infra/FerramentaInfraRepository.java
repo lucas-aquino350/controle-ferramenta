@@ -2,9 +2,10 @@ package br.com.suport.controleferramenta.ferramenta.infra;
 
 import br.com.suport.controleferramenta.ferramenta.application.repository.FerramentaRepository;
 import br.com.suport.controleferramenta.ferramenta.domain.Ferramenta;
-import br.com.suport.controleferramenta.ferramenta.handler.APIException;
+import br.com.suport.controleferramenta.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +21,11 @@ public class FerramentaInfraRepository implements FerramentaRepository {
     @Override
     public Ferramenta salva(Ferramenta ferramenta) {
         log.info("[inicia] FerramentaInfraRepository - salva");
-        ferramentaMongoSpringRepository.save(ferramenta);
+        try {
+            ferramentaMongoSpringRepository.save(ferramenta);
+        } catch(DataIntegrityViolationException e){
+            throw APIException.build(HttpStatus.BAD_REQUEST, "Existem dados duplicados",e);
+        }
         log.info("[finaliza] FerramentaInfraRepository - salva");
         return ferramenta;
     }

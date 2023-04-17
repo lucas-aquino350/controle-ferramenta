@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 @Value
 public class EmprestimoAlteracaoRequest {
-
     private String motivo;
     private String ordemDeServico;
     private LocalDate dataDevolucao;

@@ -9,7 +9,6 @@ import java.util.UUID;
 
 @Value
 public class EmprestimoRequest {
-
     @NotNull
     private UUID idFerramenta;
     @NotNull
@@ -22,5 +21,4 @@ public class EmprestimoRequest {
     private String ordemDeServico;
     @NotNull
     private LocalDate dataRetirada;
-
 }
