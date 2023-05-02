@@ -1,0 +1,14 @@
+server:
+  servlet:
+    context-path: /controle-ferramenta/api
+
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      uri: ${MONGO_DB_URI:mongodb+srv://lucas:joao@cluster0.yzwghcx.mongodb.net/cluster0?retryWrites=true&w=majority}
+      auto-index-creation: true
+
+springdoc:
+  swagger-ui:
+    path: /public/swagger
